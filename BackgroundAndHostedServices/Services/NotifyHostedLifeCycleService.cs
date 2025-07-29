@@ -7,15 +7,15 @@ public class NotifyHostedLifeCycleService : IHostedLifecycleService
 	public NotifyHostedLifeCycleService (ILogger<NotifyHostedLifeCycleService> logger) =>
 		_logger = logger;
 
-	public async Task StartAsync (CancellationToken cancellationToken)
-	{
-		_logger.LogInformation ("Hosted Lifecycle Service: Start Async...");
-		await Task.Delay (5000, cancellationToken);
-	}
-
 	public async Task StartingAsync (CancellationToken cancellationToken)
 	{
 		_logger.LogInformation ("Hosted Lifecycle Service: Starting Async...");
+		await Task.Delay (5000, cancellationToken);
+	}
+
+	public async Task StartAsync (CancellationToken cancellationToken)
+	{
+		_logger.LogInformation ("Hosted Lifecycle Service: Start Async...");
 		await Task.Delay (5000, cancellationToken);
 	}
 
@@ -25,15 +25,15 @@ public class NotifyHostedLifeCycleService : IHostedLifecycleService
 		await Task.Delay (5000, cancellationToken);
 	}
 
-	public Task StopAsync (CancellationToken cancellationToken)
-	{
-		_logger.LogInformation ("Hosted Lifecycle Service: Stop Async...");
-		return Task.CompletedTask;
-	}
-
 	public Task StoppingAsync (CancellationToken cancellationToken)
 	{
 		_logger.LogInformation ("Hosted Lifecycle Service: Stopping Async...");
+		return Task.CompletedTask;
+	}
+
+	public Task StopAsync (CancellationToken cancellationToken)
+	{
+		_logger.LogInformation ("Hosted Lifecycle Service: Stop Async...");
 		return Task.CompletedTask;
 	}
 

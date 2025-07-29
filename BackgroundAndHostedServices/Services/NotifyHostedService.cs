@@ -22,7 +22,7 @@ public class NotifyHostedService : IHostedService
 		}
 		catch (TaskCanceledException)
 		{
-			_logger.LogInformation("Task was canceled gracefully...");
+			_logger.LogInformation ("Task was canceled gracefully...");
 		}
 	}
 

@@ -1,4 +1,4 @@
-﻿namespace BackgroundAndHostedServices.Models;
+﻿namespace BackgroundAndHostedServices.Dtos;
 
 public class EndpointResponse
 {

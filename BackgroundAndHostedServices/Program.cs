@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder (args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://@aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi ();
 
 builder.Services.Configure<JsonOptions> (options =>
 {
@@ -26,32 +26,24 @@ builder.Services.Configure<JsonOptions> (options =>
 	// options.SerializerOptions.WriteIndented = true;
 });
 
-builder.Services.Configure<HostOptions> (options =>
-{
-	// Configure the host to start and stop services concurrently.
-	// This allows multiple services to start and stop at the same time, improving performance
-	// and reducing the time it takes for the application to start and stop.
-	// This is particularly useful when you have multiple long-running services that can be started or stopped
-	// independently of each other.
-	options.ServicesStartConcurrently = true;
+// builder.Services.Configure<HostOptions> (options =>
+// {
+// 	// Start all services in parallel to improve readiness.
+// 	options.ServicesStartConcurrently = true;
 
-	// Configure the host to stop services concurrently.
-	// This allows multiple services to stop at the same time, improving performance
-	// and reducing the time it takes for the application to stop.
-	// This is particularly useful when you have multiple long-running services that can be stopped
-	// independently of each other.
-	options.ServicesStopConcurrently = true;
-});
+// 	// Stop all services in parallel for quicker shutdown.
+// 	options.ServicesStopConcurrently = true;
+// });
 
 _ = Random.Shared.Next (0, 3) switch
 {
-	0 => builder.Services.AddHostedService<NotifyBackgroundService>(),
-	1 => builder.Services.AddHostedService<NotifyHostedService>(),
-	2 => builder.Services.AddHostedService<NotifyHostedLifeCycleService>(),
+	0 => builder.Services.AddHostedService<NotifyBackgroundService> (),
+	1 => builder.Services.AddHostedService<NotifyHostedService> (),
+	2 => builder.Services.AddHostedService<NotifyHostedLifeCycleService> (),
 	_ => throw new InvalidOperationException ("Unexpected value for random")
 };
 
-var app = builder.Build();
+var app = builder.Build ();
 
 /*
 app.Services.GetRequiredService<T>() returns a registered services of type T. But, the sequence of the registered services is not guaranteed.
@@ -62,16 +54,16 @@ Whereas GetRequiredService<T> method will throw an exception if no service of ty
 
 // Instead of blindly depending on our custom service being the first registered service, we must get service name based on filter
 // var hostedServiceName = app.Services.GetServices<IHostedService>().FirstOrDefault()?.GetType().Name ?? "No Service";
-var hostedServiceName = app.Services.GetServices<IHostedService>()
-	.FirstOrDefault (s => s.GetType().Namespace?.Contains ("BackgroundAndHostedServices.Services") == true)?.GetType().Name;
+var hostedServiceName = app.Services.GetServices<IHostedService> ()
+	.FirstOrDefault (s => s.GetType ().Namespace?.Contains ("BackgroundAndHostedServices.Services") == true)?.GetType ().Name;
 
-var logger = app.Services.GetRequiredService<ILogger<Program>>();
+var logger = app.Services.GetRequiredService<ILogger<Program>> ();
 logger.LogInformation ("*** Service Registered: {service} ***", hostedServiceName);
 
 // Configure the HTTP request pipeline.
-app.MapOpenApi();
+app.MapOpenApi ();
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection ();
 
 app.MapGet ("/", () =>
 {
@@ -79,10 +71,10 @@ app.MapGet ("/", () =>
 	{
 		Message = "Hello World!",
 		ServiceName = hostedServiceName,
-		CurrentTime = DateTime.Now.ToShortTimeString()
+		CurrentTime = DateTime.Now.ToShortTimeString ()
 	};
 
 	return TypedResults.Ok (result);
 });
 
-app.Run();
+app.Run ();

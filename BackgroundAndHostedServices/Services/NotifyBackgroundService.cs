@@ -22,7 +22,7 @@ public class NotifyBackgroundService : BackgroundService
 		}
 		catch (TaskCanceledException)
 		{
-			_logger.LogInformation("Task was canceled gracefully...");
+			_logger.LogInformation ("Task was canceled gracefully...");
 		}
 	}
 }
