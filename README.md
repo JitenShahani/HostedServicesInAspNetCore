@@ -54,7 +54,7 @@
 
 Behind the scenes, these services ensure your app starts gracefully, runs predictably, and shuts down cleanly. They offer a reliable mechanism for executing tasks beyond the request-response flow, coordinating initialization logic, running long-lived background processes, or ensuring graceful shutdown. These services integrate tightly with the host lifecycle, operating seamlessly alongside your primary workflows.
 
-This repository offers a thoughtful walkthrough of ASP.NET Core’s hosted service model, using practical patterns for background processing. Built with **.NET 9**, it showcases multiple service types, including scoped service support introduced in .NET 6.
+This repository offers a thoughtful walkthrough of ASP.NET Core’s hosted service model using practical patterns for background processing. Built with **.NET 9**, it showcases multiple service implementations, including scoped service activation techniques commonly used in background workflows.
 
 Understanding these lifecycles is key to building resilient systems. Whether you're evolving legacy workloads or starting fresh, this reference explores **what hosted services are**, **how they differ**, and **where they shine** within modern .NET applications. You’ll also learn selection strategies and lifecycle coordination techniques for staged execution and shutdown.
 
