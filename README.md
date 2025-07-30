@@ -171,7 +171,7 @@ public class NotifyHostedService : IHostedService
 }
 ```
 
-### 🔵 `Services/NotifyHostedLifecycleService.cs` – Harnessing `IHostedLifecycleService`
+### 🔵 `Services/NotifyHostedLifeCycleService.cs` – Harnessing `IHostedLifecycleService`
 
 This service takes full advantage of the granular lifecycle control introduced in **.NET 8**. The implementation showcases all six lifecycle stages with distinct log entries and controlled delays, offering granular control over startup and shutdown behavior. This precision is especially valuable for telemetry, dependency orchestration, and reliable cleanup where visibility across the full lifecycle is mission-critical.
 
