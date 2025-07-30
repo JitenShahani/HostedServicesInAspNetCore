@@ -86,7 +86,7 @@ The structure of this repository has been intentionally crafted to map each host
 │   │   └── NotifyBackgroundService.cs      # Demonstrates long-running execution
 │   │   └── NotifyHostedService.cs          # Demonstrates manual lifecycle control
 │   │   └── NotifyHostedLifeCycleService.cs # Highlights advanced lifecycle hooks for staged startup/shutdown
-│   ├── appsettings.json                    # Configures JSON serialization behavior and host startup concurrency
+│   ├── appsettings.json                    # Configures JSON serialization behavior
 │   ├── BackgroundAndHostedServices.http    # REST client script to test local endpoint responses
 │   └── Program.cs                          # Main entry point with service registration, filtering logic, and endpoint mapping
 ```
